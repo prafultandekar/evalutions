@@ -1,24 +1,18 @@
 import React from "react";
 
-const Product = () => {
-  // TODO: Remove below const and instead import them from chakra
-  const Text = () => <div />;
-  const Image = () => <div />;
-  const Box = () => <div />;
-  const Stack = () => <div />;
-  const Heading = () => <div />;
-  const Tag = () => <div />;
-  const TagLabel = () => <div />;
+const Product = ({ title, category, gender, imageSrc, price}) => {
+  
+
   return (
-    <Stack data-cy="product">
-      <Image data-cy="product-image" />
-      <Text data-cy="product-category"></Text>
-      <Tag>
-        <TagLabel data-cy="product-gender"></TagLabel>
-      </Tag>
-      <Heading data-cy="product-title"></Heading>
-      <Box data-cy="product-price"></Box>
-    </Stack>
+    <div data-cy="product">
+      <img data-cy="product-image" src={imageSrc}/>
+      <p data-cy="product-category">{category}</p>
+      <div>
+        <p data-cy="product-gender">{gender}</p>
+      </div>
+      <p data-cy="product-title">{title}</p>
+      <p data-cy="product-price">{price}</p>
+    </div>
   );
 };
 
