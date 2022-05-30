@@ -10,11 +10,19 @@ const Products = () => {
   const [limit,setLimit] = useState(3)
 const [formData,setFormData] = useState([])
 
+
+
   useEffect(()=>{
   const GetData = async ()=>{
     let r = await fetch(`http://localhost:8080/products?_page=${page}&_limit=${limit}`)
-   setCarddata(r.data)
+  //  setCarddata(r.data)
+  //  console.log(r)
+  let data = await r.json()
+  // console.log(data)
+
+  setCarddata(data)
   }
+
   GetData()
 },[page,limit])
 
@@ -40,8 +48,8 @@ const postData = async () => {
     <Flex style={{flexDirection:"column",width:"70%",justifyContent:"center",margin:"auto"}}>
       <AddProduct postData={postData} />
       
-      <Grid><div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"20px"}}>{carddata.map((item)=>{
-        return <Product key={item.id} item={item}/>
+      <Grid><div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"20px"}}>{carddata && carddata.map((item)=>{
+        return <Product key={item.id} title={item.title} category={item.category} gender={item.gender} imageSrc={item.imageSrc} price={item.price} />
       })}</div> </Grid>
       <Pagination page={page} setPage={setPage} limit={limit} setLimit={setLimit}/> 
     </Flex>

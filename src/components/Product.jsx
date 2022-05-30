@@ -2,7 +2,7 @@ import React from "react";
 
 const Product = ({ title, category, gender, imageSrc, price}) => {
   
-
+console.log(title)
   return (
     <div data-cy="product">
       <img data-cy="product-image" src={imageSrc}/>
